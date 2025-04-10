@@ -92,7 +92,13 @@ const TOCInline = ({
     return (
       <ul className={ulClassName}>
         {items.map((item, index) => (
-          <li key={index} className={liClassName + `${item.depth >= indentDepth ? ' ml-6' : ''}`}>
+          <li
+            key={index}
+            className={
+              liClassName +
+              `${item.depth >= indentDepth && item.depth > fromHeading + 1 ? ' ml-6' : ''}`
+            }
+          >
             <a href={item.url}>{item.value}</a>
             {createList(item.children)}
           </li>
